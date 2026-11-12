@@ -30,3 +30,4 @@ Thank you for your interest in improving GlimmerFold! We welcome additions of ne
 - Keep the core engine pure vanilla ES modules.
 - Ensure all resources (textures, geometries, materials) are properly disposed of when switching presets to maintain stable WebGL memory.
 - Verify touch events and pointer kinematics on mobile devices.
+
