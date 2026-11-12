@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate JavaScript Modules syntax
+        run: |
+          for f in js/*.js; do
+            node --check "$f" || exit 1
+          done
+          echo "All JS modules passed syntax check."
+
+      - name: Verify Core HTML & Assets
+        run: |
+          test -f index.html || exit 1
+          test -f brand.html || exit 1
+          test -f assets/glimmerfold-icon.svg || exit 1
+          test -f assets/glimmerfold-mark.svg || exit 1
+          echo "All core assets and HTML entry points verified."
