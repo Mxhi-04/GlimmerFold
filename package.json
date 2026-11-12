@@ -1,0 +1,25 @@
+{
+  "name": "glimmerfold",
+  "version": "1.0.0",
+  "description": "✨ Turn any picture into a 3D foil-embossed greeting card that opens, shimmers, and comes to life — shareable with a link.",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 serve.py 5173",
+    "start": "python3 serve.py 5173",
+    "test:syntax": "for f in js/*.js; do node --check \"$f\"; done"
+  },
+  "keywords": [
+    "greeting-cards",
+    "threejs",
+    "webgl",
+    "foil-embossed",
+    "3d-graphics",
+    "shaders"
+  ],
+  "author": "GlimmerFold Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mxhi-04/GlimmerFold.git"
+  }
+}
