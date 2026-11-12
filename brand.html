@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glimmerfold brand</title>
+<link rel="icon" type="image/svg+xml" href="assets/glimmerfold-icon.svg" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root { --ink: #1b1714; --muted: #7a736b; --line: #ebe6de; --paper: #fbf8f2; --night: #151211; --gold: #c79c3e; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Inter, system-ui, sans-serif; color: var(--ink); background: #f4f1eb; }
+  main { max-width: 1040px; margin: 0 auto; padding: 48px 20px 80px; }
+  header { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+  header img { width: 48px; height: 48px; border-radius: 12px; }
+  h1 { font: 600 44px/1 'Cormorant Garamond', serif; margin: 0; }
+  h1 i, .wm i { background: linear-gradient(105deg, #9c7425, #d9b45a 30%, #fff4cf 45%, #d9b45a 55%, #9c7425 75%, #c79c3e); background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: glimmer 5.5s ease-in-out infinite; padding-right: .05em; }
+  @keyframes glimmer { 0%, 55% { background-position: 100% 0; } 85%, 100% { background-position: -50% 0; } }
+  .lede { color: var(--muted); max-width: 640px; line-height: 1.6; margin: 14px 0 36px; }
+  h2 { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 40px 0 14px; font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .tile { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 28px; min-height: 200px; display: flex; flex-direction: column; justify-content: space-between; gap: 18px; }
+  .tile.dark { background: var(--night); border-color: #2a2420; color: #f4efe6; }
+  .tile.paper { background: var(--paper); }
+  .stage { flex: 1; display: grid; place-items: center; }
+  .foot { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); }
+  .dark .foot { color: #9d958b; }
+  button { font: 500 12px Inter; border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+  .dark button { background: #221d1a; border-color: #3a322c; color: #f4efe6; }
+  .lockup { display: flex; align-items: center; gap: 14px; }
+  .lockup img { width: 54px; height: 58px; }
+  .wm { font: 600 46px/1 'Cormorant Garamond', serif; letter-spacing: -.005em; }
+  .tag { font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .dark .tag { color: #b5a993; }
+  .stack { text-align: center; }
+  .stack img { width: 84px; height: 90px; display: block; margin: 0 auto 10px; }
+  .icons { display: flex; align-items: end; gap: 22px; }
+  .icons img { border-radius: 22%; box-shadow: 0 6px 18px rgba(0,0,0,.18); }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .sw { border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #fff; font-size: 12px; }
+  .sw div:first-child { height: 74px; }
+  .sw div:last-child { padding: 10px 12px; line-height: 1.5; }
+  .sw b { display: block; font-weight: 600; }
+  .type { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .type .tile { min-height: 0; }
+  .spec { font-size: 12px; color: var(--muted); }
+  .why { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 24px 28px; line-height: 1.65; }
+  .why b { font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { h1 i, .wm i { animation: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header><img src="assets/glimmerfold-icon.svg" alt="" /><h1>Glimmer<i>fold</i></h1></header>
+  <p class="lede">Living foil cards. Turn any picture into a foil-embossed greeting card that opens in your hands, glimmers as it turns, and quietly comes to life — then send it with a link.</p>
+
+  <div class="why">
+    <b>The name.</b> <em>Glimmer</em> is the foil catching the light and the little movements that make every card feel alive. <em>Fold</em> is the card itself — paper that opens to a letter inside.
+    <br /><b>The mark.</b> A card caught mid-open: a gold-foil cover swinging toward you, the cream page behind it, and the glimmer waiting inside. The <em>fold</em> in the wordmark is set in foil and shimmers every few seconds, the way the cards do.
+  </div>
+
+  <h2>Logo</h2>
+  <div class="grid">
+    <div class="tile paper">
+      <div class="stage"><div class="lockup"><img src="assets/glimmerfold-mark.svg" alt="" /><div><div class="wm">Glimmer<i>fold</i></div><div class="tag">living foil cards</div></div></div></div>
+      <div class="foot"><span>Primary — on light</span><button data-dl="light">Download PNG</button></div>
+    </div>
+    <div class="tile dark">
+      <div class="stage"><div class="lockup"><img src="assets/glimmerfold-mark.svg" alt="" /><div><div class="wm">Glimmer<i>fold</i></div><div class="tag">living foil cards</div></div></div></div>
+      <div class="foot"><span>Primary — on dark</span><button data-dl="dark">Download PNG</button></div>
+    </div>
+    <div class="tile">
+      <div class="stage"><div class="stack"><img src="assets/glimmerfold-mark.svg" alt="" /><div class="wm" style="font-size:38px">Glimmer<i>fold</i></div></div></div>
+      <div class="foot"><span>Stacked</span><button data-dl="stack">Download PNG</button></div>
+    </div>
+    <div class="tile">
+      <div class="stage"><div class="icons"><img src="assets/glimmerfold-icon.svg" width="96" height="96" alt="" /><img src="assets/glimmerfold-icon.svg" width="56" height="56" alt="" /><img src="assets/glimmerfold-icon.svg" width="32" height="32" alt="" /></div></div>
+      <div class="foot"><span>App icon &amp; favicon</span><button data-dl="icon">Download PNG</button></div>
+    </div>
+  </div>
+
+  <h2>Colour</h2>
+  <div class="swatches">
+    <div class="sw"><div style="background:linear-gradient(135deg,#fff4cf,#e6c36f 28%,#9c7425 55%,#f3d98b 78%,#b8913f)"></div><div><b>Foil gold</b>#E6C36F → #9C7425</div></div>
+    <div class="sw"><div style="background:#151211"></div><div><b>Night ink</b>#151211</div></div>
+    <div class="sw"><div style="background:#fbf8f2"></div><div><b>Card paper</b>#FBF8F2</div></div>
+    <div class="sw"><div style="background:#1b1714"></div><div><b>Letter ink</b>#1B1714</div></div>
+    <div class="sw"><div style="background:#7a736b"></div><div><b>Quiet grey</b>#7A736B</div></div>
+  </div>
+
+  <h2>Type</h2>
+  <div class="type">
+    <div class="tile"><div class="wm" style="font-size:40px">Glimmer<i>fold</i></div><div class="spec">Wordmark — Cormorant Garamond SemiBold, “fold” in italic foil</div></div>
+    <div class="tile"><div style="font:500 22px Inter">Make a card, write inside it, send it with a link.</div><div class="spec">Interface — Inter</div></div>
+  </div>
+</main>
+
+<script>
+  // Downloads: draw the lockups onto a canvas once the fonts are ready, so the PNGs match exactly.
+  const load = (src) => new Promise((res) => { const i = new Image(); i.onload = () => res(i); i.src = src; });
+  const foil = (ctx, x0, x1) => {
+    const g = ctx.createLinearGradient(x0, 0, x1, 0);
+    [[0, '#9c7425'], [0.3, '#d9b45a'], [0.45, '#fff0c4'], [0.6, '#d9b45a'], [1, '#a8802e']].forEach(([o, c]) => g.addColorStop(o, c));
+    return g;
+  };
+  async function render(kind) {
+    await document.fonts.load('600 100px "Cormorant Garamond"');
+    await document.fonts.load('italic 600 100px "Cormorant Garamond"');
+    await document.fonts.load('500 20px Inter');
+    const mark = await load('assets/glimmerfold-mark.svg');
+    const icon = await load('assets/glimmerfold-icon.svg');
+    const c = document.createElement('canvas');
+    const ctx = c.getContext('2d');
+    if (kind === 'icon') {
+      c.width = c.height = 1024;
+      ctx.drawImage(icon, 0, 0, 1024, 1024);
+      return c;
+    }
+    const dark = kind === 'dark';
+    const word = (x, y, size, align = 'left') => {
+      ctx.font = `600 ${size}px "Cormorant Garamond"`;
+      const w1 = ctx.measureText('Glimmer').width;
+      ctx.font = `italic 600 ${size}px "Cormorant Garamond"`;
+      const w2 = ctx.measureText('fold').width;
+      const start = align === 'center' ? x - (w1 + w2) / 2 : x;
+      ctx.textBaseline = 'alphabetic';
+      ctx.font = `600 ${size}px "Cormorant Garamond"`;
+      ctx.fillStyle = dark ? '#f4efe6' : '#1b1714';
+      ctx.fillText('Glimmer', start, y);
+      ctx.font = `italic 600 ${size}px "Cormorant Garamond"`;
+      ctx.fillStyle = foil(ctx, start + w1, start + w1 + w2);
+      ctx.fillText('fold', start + w1, y);
+      return w1 + w2;
+    };
+    if (kind === 'stack') {
+      c.width = 1200; c.height = 1000;
+      ctx.drawImage(mark, 600 - 190, 150, 380, 408);
+      word(600, 790, 190, 'center');
+      return c;
+    }
+    c.width = 2000; c.height = 640;
+    ctx.fillStyle = dark ? '#151211' : 'rgba(0,0,0,0)';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.drawImage(mark, 150, 140, 330, 354);
+    const w = word(540, 360, 230);
+    ctx.font = '500 44px Inter';
+    ctx.fillStyle = dark ? '#b5a993' : '#7a736b';
+    if ('letterSpacing' in ctx) ctx.letterSpacing = '10px';
+    ctx.fillText('LIVING FOIL CARDS', 548, 460);
+    void w;
+    return c;
+  }
+  document.querySelectorAll('[data-dl]').forEach((b) =>
+    b.addEventListener('click', async () => {
+      const c = await render(b.dataset.dl);
+      const a = document.createElement('a');
+      a.href = c.toDataURL('image/png');
+      a.download = `glimmerfold-${b.dataset.dl}.png`;
+      a.click();
+    })
+  );
+</script>
+</body>
+</html>
