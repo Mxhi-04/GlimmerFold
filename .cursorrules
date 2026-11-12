@@ -1,0 +1,16 @@
+# Cursor Rules for GlimmerFold
+
+## Project Essence
+GlimmerFold is an ultra-tactile 3D greeting card experience. Every interaction must feel smooth, responsive, and grounded in physical paper and metallic foil optics.
+
+## Code Standards
+- **Vanilla ES Modules**: Use native browser modules without bundlers or heavy build steps.
+- **Three.js Best Practices**:
+  - Dispose geometries, materials, and textures when switching card presets to avoid WebGL context memory leaks.
+  - Keep requestAnimationFrame render loops lightweight; throttle shader computations during idle state.
+- **WebGL & Shader Pipeline**:
+  - Preserve energy-conservative BRDF calculations for foil highlights.
+  - Keep mobile GPU compatibility in mind — test precision qualifiers (`mediump` / `highp`).
+- **Touch & Pointer Kinematics**:
+  - Always support unified PointerEvents (`pointerdown`, `pointermove`, `pointerup`).
+  - Damping and easing should emulate physical paper stiffness and fold inertia.
