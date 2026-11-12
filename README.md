@@ -56,6 +56,17 @@ GlimmerFold/
 
 ---
 
+## 🌐 Browser Compatibility
+
+| Browser | Status | Features Supported |
+| :--- | :---: | :--- |
+| **Chrome / Edge / Chromium** | ✅ | Full WebGL2 foil shaders, RoomEnvironment PBR, offline export |
+| **Safari / WebKit (iOS & macOS)** | ✅ | Full PBR, touch kinematics, offline single-file cards |
+| **Firefox** | ✅ | Full WebGL shaders, particle systems, zero-dependency share |
+| **Mobile Browsers** | ✅ | Unified touch gestures, tilt response, responsive viewport |
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Graphics**: [Three.js](https://threejs.org/) (WebGL), custom GLSL surface illumination shaders
