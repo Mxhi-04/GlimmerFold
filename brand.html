@@ -29,7 +29,8 @@
   .dark button { background: #221d1a; border-color: #3a322c; color: #f4efe6; }
   .lockup { display: flex; align-items: center; gap: 14px; }
   .lockup img { width: 54px; height: 58px; }
-  .wm { font: 600 46px/1 'Cormorant Garamond', serif; letter-spacing: -.005em; }
+  .wm { font: 600 clamp(32px, 3.6vw, 44px)/1 'Cormorant Garamond', serif; letter-spacing: -.005em; white-space: nowrap; }
+  .lockup img { width: clamp(42px, 4.4vw, 54px); height: auto; }
   .tag { font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
   .dark .tag { color: #b5a993; }
   .stack { text-align: center; }

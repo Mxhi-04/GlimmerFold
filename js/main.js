@@ -4,6 +4,7 @@ import * as S from './surface.js';
 import { PRESETS, CATEGORIES, ART_FONTS, buildPreset, buildThumb, drawLayer } from './gallery.js';
 import { Effects, FX_TYPES } from './fx.js';
 import { packCard, unpackCard, imageToDataURL, loadImage } from './share.js';
+import { packageCard } from './package.js';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => [...document.querySelectorAll(s)];
@@ -1078,7 +1079,15 @@ function bindUI() {
     } else copyLink();
   });
   $('#btnOpenCard').addEventListener('click', () => window.open($('#shareUrl').value, '_blank', 'noopener'));
-  $('#btnPng2').addEventListener('click', savePng);
+  $('#btnPng2').addEventListener('click', saveCard);
+  $('#saveCard').addEventListener('click', saveCard);
+  $('#savePicture').addEventListener('click', () => {
+    closeSaveMenu();
+    savePng();
+  });
+  document.addEventListener('pointerdown', (e) => {
+    if (!e.target.closest('#saveMenu, #btnPng')) closeSaveMenu();
+  });
   $('#btnOpen').addEventListener('click', () => {
     stopPlay();
     toggleOpen();
@@ -1086,7 +1095,7 @@ function bindUI() {
   $('#btnReset').addEventListener('click', resetView);
   $('#btnPlay').addEventListener('click', () => (playing ? stopPlay() : startPlay()));
   $('#btnLink').addEventListener('click', makeLink);
-  $('#btnPng').addEventListener('click', savePng);
+  $('#btnPng').addEventListener('click', (e) => ($('#saveMenu').classList.contains('hidden') ? openSaveMenu(e.currentTarget) : closeSaveMenu()));
   $('#makeOwn').addEventListener('click', () => {
     document.body.classList.remove('viewer');
     history.replaceState(null, '', location.pathname);
@@ -1516,11 +1525,7 @@ async function makeLink() {
   btn.textContent = 'Making your link…';
   await new Promise((r) => setTimeout(r, 30));
   try {
-    const payload = { v: 1, s: pick(state, SHARE_KEYS) };
-    if (current.kind === 'preset') payload.p = current.id;
-    else payload.img = imageToDataURL(source.image, 900, source.hasAlpha);
-    if (state.mode === 'paint' && paint && L) payload.pm = paintToDataURL();
-    const code = await packCard(payload);
+    const code = await packCard(cardPayload(900));
     const url = `${location.origin}${location.pathname}#c=${code}`;
     $('#shareUrl').value = url;
     lastLinkSig = signature();
@@ -1535,6 +1540,52 @@ async function makeLink() {
     btn.disabled = false;
     updateLinkNote();
   }
+}
+
+// everything needed to rebuild this exact card somewhere else
+function cardPayload(maxImage) {
+  const payload = { v: 1, s: pick(state, SHARE_KEYS) };
+  if (current.kind === 'preset') payload.p = current.id;
+  else payload.img = imageToDataURL(source.image, maxImage, source.hasAlpha);
+  if (state.mode === 'paint' && paint && L) payload.pm = paintToDataURL();
+  return payload;
+}
+
+// Save the whole interactive card as one .html file anyone can open — 3D, opening, animation and all.
+let packing = false;
+async function saveCard() {
+  if (packing) return;
+  packing = true;
+  closeSaveMenu();
+  toast('Packing your card…');
+  try {
+    const code = await packCard(cardPayload(1400));
+    const title = state.name ? `A card from ${state.name} — Glimmerfold` : 'A card for you — Glimmerfold';
+    const blob = await packageCard(code, title);
+    const slug = (PRESETS.find((p) => p.id === current.id)?.name || 'card').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `glimmerfold-${current.kind === 'custom' ? 'card' : slug}.html`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast(`Saved (${(blob.size / 1048576).toFixed(1)} MB) — send the file; it opens in any browser, even offline`);
+  } catch (e) {
+    console.error(e);
+    toast('Couldn’t save the card this time');
+  } finally {
+    packing = false;
+  }
+}
+
+function openSaveMenu(anchor) {
+  const menu = $('#saveMenu');
+  const r = anchor.getBoundingClientRect();
+  menu.style.left = Math.max(8, Math.min(window.innerWidth - 268, r.right - 260)) + 'px';
+  menu.style.top = r.top - 8 + 'px';
+  menu.classList.remove('hidden');
+}
+function closeSaveMenu() {
+  $('#saveMenu').classList.add('hidden');
 }
 
 async function applyPayload(data) {
@@ -1554,9 +1605,11 @@ async function applyPayload(data) {
 
 async function initFromHash() {
   const m = location.hash.match(/#c=(.+)$/);
-  if (!m) return false;
+  // a saved card file carries its card inside instead of in the link
+  const code = m ? m[1] : window.__GF_CARD;
+  if (!code) return false;
   try {
-    await applyPayload(await unpackCard(m[1]));
+    await applyPayload(await unpackCard(code));
     document.body.classList.add('viewer');
     $('#vbFrom').textContent = state.name ? `from ${state.name}` : 'tap it to open';
     return true;

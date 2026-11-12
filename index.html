@@ -197,6 +197,15 @@
   body.viewer .app { grid-template-columns: 1fr; }
   body.viewer .panel, body.viewer .dock { display: none; }
   body.viewer .viewer-banner, body.viewer .make-own { display: block; }
+  body.packaged .make-own { display: none; }
+
+  /* download menu */
+  .save-menu { position: fixed; z-index: 20; width: 260px; transform: translateY(-100%); background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 6px; box-shadow: 0 16px 40px rgba(0,0,0,.14); }
+  .save-menu button { display: flex; gap: 11px; width: 100%; text-align: left; border: 0; background: none; border-radius: 10px; padding: 10px; align-items: flex-start; }
+  .save-menu button:hover { background: var(--soft); }
+  .save-menu svg { width: 20px; height: 20px; flex: none; margin-top: 1px; }
+  .save-menu b { display: block; font-size: 13px; font-weight: 600; }
+  .save-menu small { display: block; font-size: 11.5px; color: var(--muted); line-height: 1.4; margin-top: 2px; }
 
   @media (max-width: 860px) {
     body { overflow: auto; }
@@ -242,6 +251,16 @@
     <div class="hint" id="hint">Tap the card to open it · drag it to turn it round</div>
     <div class="drop">Drop your picture to make it a card</div>
     <div class="toast" id="toast"></div>
+  <div class="save-menu hidden" id="saveMenu" role="menu">
+    <button id="saveCard" role="menuitem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5.5h6.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 0-1.5-1.5H4z"/><path d="M20 5.5h-6.5A1.5 1.5 0 0 0 12 7v12a1.5 1.5 0 0 1 1.5-1.5H20z"/></svg>
+      <span><b>The card itself</b><small>Interactive 3D — opens, turns and comes alive. One file that opens in any browser, even offline.</small></span>
+    </button>
+    <button id="savePicture" role="menuitem">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="m4 16 4.5-4.5L13 16l2.5-2.5L20 18"/></svg>
+      <span><b>A picture</b><small>A still image of the card as you see it now (PNG).</small></span>
+    </button>
+  </div>
   </main>
 
   <aside class="panel">
@@ -431,11 +450,11 @@
       <p class="note" id="linkNote"></p>
       <div id="sharePanel" class="hidden">
         <div class="share-row"><input id="shareUrl" readonly aria-label="Your card link" /><button id="btnCopy">Copy</button></div>
-        <div class="share-links"><button class="link" id="btnShare">Share…</button><button class="link" id="btnOpenCard">Open the card</button><button class="link" id="btnPng2">Save a picture</button></div>
+        <div class="share-links"><button class="link" id="btnShare">Share…</button><button class="link" id="btnOpenCard">Open the card</button><button class="link" id="btnPng2">Download the card</button></div>
       </div>
       <div class="foot-row" id="footRow">
         <button class="primary" id="btnLink">Make a link to share</button>
-        <button class="ghost" id="btnPng" title="Save a picture of the card">
+        <button class="ghost" id="btnPng" title="Download the card">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
         </button>
       </div>

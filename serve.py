@@ -13,7 +13,13 @@ class NoCacheHandler(http.server.SimpleHTTPRequestHandler):
         super().end_headers()
 
 
-socketserver.TCPServer.allow_reuse_address = True
-with socketserver.TCPServer(("", PORT), NoCacheHandler) as httpd:
+class Server(socketserver.ThreadingMixIn, http.server.HTTPServer):
+    # one thread per request, so the page's many module files load in parallel without dropped connections
+    daemon_threads = True
+    allow_reuse_address = True
+    request_queue_size = 64
+
+
+with Server(("", PORT), NoCacheHandler) as httpd:
     print(f"Glimmerfold on http://localhost:{PORT}")
     httpd.serve_forever()
