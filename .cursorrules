@@ -14,3 +14,4 @@ GlimmerFold is an ultra-tactile 3D greeting card experience. Every interaction m
 - **Touch & Pointer Kinematics**:
   - Always support unified PointerEvents (`pointerdown`, `pointermove`, `pointerup`).
   - Damping and easing should emulate physical paper stiffness and fold inertia.
+

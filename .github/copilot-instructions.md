@@ -14,3 +14,4 @@ GlimmerFold is an interactive 3D foil-embossed greeting card web application bui
 ## Shader & Math Conventions
 - When writing custom fragment or vertex shaders for foil reflection, maintain energy conservation across metallic/roughness values.
 - Foil highlights should blend normal map perturbation with view vector grazing angles (Schlick Fresnel approximation) for genuine iridescent sheen.
+

@@ -29,3 +29,4 @@ Share links compress state using base64-encoded JSON or URL hash keys:
 - `p`: Preset ID string (e.g. `"happiness"`, `"botanical"`)
 - `img`: Base64 compressed image payload for custom uploads
 - `s`: Selected state object containing foil tint, paper substrate, message typography, and particle settings.
+

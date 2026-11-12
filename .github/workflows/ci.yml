@@ -32,3 +32,4 @@ jobs:
           test -f assets/glimmerfold-icon.svg || exit 1
           test -f assets/glimmerfold-mark.svg || exit 1
           echo "All core assets and HTML entry points verified."
+

@@ -7,3 +7,4 @@
 - [ ] Confirmed offline card packaging (`package.js`) compiles properly
 - [ ] Verified smooth 60fps interaction on mobile touch devices
 - [ ] No WebGL memory leaks or missing resource disposals
+
